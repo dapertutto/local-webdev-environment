@@ -1,0 +1,15 @@
+---
+- name: phpmyadmin - debconf
+  debconf: name=phpmyadmin question={{ item.value.question }} value={{ item.value.val }} vtype={{ item.value.vtype }}
+  with_dict: '{{ phpmyadmin_debconf }}'
+
+- name: phpmyadmin - install
+  apt: name=phpmyadmin state=latest
+
+- name: phpmyadmin - auth through config
+  template: src=phpmyadmin.inc.php.j2 dest=/etc/phpmyadmin/conf.d/localhost.inc.php
+
+- name: phpmyadmin - work with php5-fpm
+  replace: dest=/etc/phpmyadmin/apache.conf regexp='^(# phpMyAdmin default Apache configuration)$' replace='\1 - php5-fpm-patched\nProxyPassMatch ^/phpmyadmin/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/usr/share/phpmyadmin/$1' backup=yes
+  notify:
+  - restart apache2

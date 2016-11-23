@@ -1,0 +1,27 @@
+---
+- name: mysql - install packages
+  apt: name={{ item }} state=latest
+  with_items: '{{ mysql_packages }}'
+
+- name: mysql - set root user & privileges
+  mysql_user:
+    name: root
+    password: '{{ mysql_root_pass }}'
+    host: '{{ item }}'
+    login_user: root
+    login_password: '{{ mysql_root_pass }}'
+    check_implicit_admin: true
+    priv: '*.*:ALL,GRANT'
+  with_items:
+  - 127.0.0.1
+  - ::1
+  - localhost
+
+- name: mysql - my.cnf file
+  ini_file: dest=/root/.my.cnf section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }} create=yes owner=root group=root mode=0600
+  with_dict: '{{ mysql_ini }}'
+  notify:
+  - restart mysql
+
+- name: mysql - remove test database
+  mysql_db: db=test state=absent login_user=root login_password=root

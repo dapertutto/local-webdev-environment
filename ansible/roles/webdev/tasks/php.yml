@@ -1,0 +1,17 @@
+---
+- name: php5 - install packages
+  apt: name={{ item }} state=latest
+  with_items: '{{ php_packages }}'
+
+- name: php5 - ini settings
+  ini_file: dest=/etc/php5/fpm/php.ini section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
+  with_dict: '{{ php_ini }}'
+  notify:
+  - restart php5-fpm
+
+- name: php5-fpm - ini settings
+  ini_file: dest=/etc/php5/fpm/pool.d/www.conf section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
+  with_dict: '{{ php5_fpm_ini }}'
+  notify:
+  - restart php5-fpm
+

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  pre_tasks:
+    - name: update system
+      apt: update_cache=yes
+    - name: upgrade system
+      apt: upgrade=full
+
+  roles:
+    - webdev

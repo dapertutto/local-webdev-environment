@@ -1,0 +1,29 @@
+---
+- name: Apache 2 - install packages
+  apt: name={{ item }} state=latest
+  with_items: '{{ apache2_packages }}'
+
+- name: Apache 2 - disable default site
+  command: a2dissite 000-default.conf removes=/etc/apache2/sites-enabled/000-default.conf
+
+- name: Apache 2 - enable mysql mods
+  command: '{{ item }}'
+  with_items:
+    - a2enmod proxy
+    - a2enmod proxy_fcgi
+    - a2enmod rewrite
+
+- name: Apache 2 - add sites conf
+  template: src=virtual-host.conf.j2 dest=/etc/apache2/sites-available/{{ item.value.domain }}.conf
+  with_dict: '{{ sites }}'
+
+- name: Apache 2 - enable sites conf
+  command: a2ensite {{ item.value.domain }}.conf
+  with_dict: '{{ sites }}'
+  notify:
+  - restart apache2
+
+- name: hosts sites dev domains
+  template: src=hosts.j2 dest=/etc/hosts owner=root group=root
+  with_dict: '{{ sites }}'
+

@@ -1,0 +1,12 @@
+---
+- name: mailhog - directory
+  file: path="{{ mailhog_dir }}" state=directory owner=root group=root mode=0755
+
+- name: mailhog - get
+  get_url: url={{ mailhog_get_url }} dest={{ mailhog_dir }}/mailhog owner=root group=root mode=0755
+
+- name: mailhog - copy systemd unit file
+  template: src=mailhog.service.j2 dest=/etc/systemd/system/mailhog.service owner=root group=root mode=u+x
+
+- name: mailhog - run service
+  service: name=mailhog state=started enabled=yes

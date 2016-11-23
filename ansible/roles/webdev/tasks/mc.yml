@@ -1,0 +1,16 @@
+---
+- name: mc - create config dir
+  file: path={{ item.value.dir }} state=directory recurse=yes owner={{ item.key }} group={{ item.key }} mode={{ item.value.dir_perm }}
+  with_dict: '{{ mc_config }}'
+
+- name: mc - copy config
+  copy: src='{{ item.value.file_prefix }}{{ item.value.mc_1 }}' dest='{{ item.value.dir }}/{{ item.value.mc_1 }}' owner={{ item.key }} group={{ item.key }} mode={{ item.value.file_perm }}
+  with_dict: '{{ mc_config }}'
+
+- name: mc - copy config
+  copy: src='{{ item.value.file_prefix }}{{ item.value.mc_2 }}' dest='{{ item.value.dir }}/{{ item.value.mc_2 }}' owner={{ item.key }} group={{ item.key }} mode={{ item.value.file_perm }}
+  with_dict: '{{ mc_config }}'
+
+- name: mc - skin
+  ini_file: dest='{{ item.value.dir }}/{{ item.value.mc_1 }}' section=Midnight-Commander option=skin value={{ item.value.skin }} create=yes
+  with_dict: '{{ mc_config }}'

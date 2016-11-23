@@ -1,0 +1,17 @@
+---
+- name: install system packages
+  apt: name={{ item }} state=latest
+  with_items: '{{ system_packages }}'
+
+# works since 2.2.0
+- name: set timezone to {{ timezone }}
+  timezone: name={{ timezone }}
+
+- include: apache2.yml
+- include: mailhog.yml
+- include: php.yml
+- include: composer.yml
+- include: mysql.yml
+- include: phpmyadmin.yml
+- include: nodejs.yml
+- include: mc.yml
