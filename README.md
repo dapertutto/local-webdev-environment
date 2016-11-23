@@ -44,7 +44,7 @@ config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
 ## Usage 💻
 Consider this directory where it all will be fired up (as example):
-`{vagrant_box}` = `~/{your_username}/vagrant_boxes/webdev`
+`{vagrant_box}` = `~/{your_username}/vagrant_boxes/local-webdev-environment`
 Sites config in `{vagrant_box}/ansible/roles/webdev/vars/main.yml`
 
 Before provisioning sites home dirs must physically present in `{vagrant_box}/sites` (`{vagrant_box}/sites/test.dev/www` concerning config) — i.e. create them before the provisioning or else it will fail.
