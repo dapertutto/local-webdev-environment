@@ -59,7 +59,7 @@ as follows:
 ```
 After successful `vagrant up` gain access to:
 - http://test.dev:8080 — test.dev (and so the others via port 8080)
-- http://localhost:8080/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credentials is `root:root`, shoo!)
+- http://localhost:8080/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credential is `root:root`, shoo!)
 - http://127.0.0.1:8025 — MailHog mailcatcher service to test email sending locally
 - Composer runs as `composer` in shell
 - php Xdebug on 9001 port. I'm using nice Firefox add-on [Cute Xdebug](https://addons.mozilla.org/en-US/firefox/addon/cute-xdebug/?src=api) to switch listening on and off with Eclipse IDE
