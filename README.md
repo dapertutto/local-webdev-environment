@@ -1,5 +1,6 @@
 # Local multi-site webdev environment based on Vagrant via VirtualBox provisioned by Ansible
 Vagrant box of choice: [debian/jessie64](https://atlas.hashicorp.com/debian/boxes/jessie64)
+
 Should work on Ubuntu boxes as well.
 ## What will be installed and configured ⚒️
 Generally latest versions available (otherwise specified major.[minor] that matters)
@@ -29,11 +30,11 @@ Guest machine timezone: Europe/Moscow
 - [Vagrant](https://www.vagrantup.com/) (1.8.6 at the moment) — Vagrant service and API understanding
   - [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) Vagrant handy plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.
 
-[Ansible](https://www.ansible.com/) (2.2.0 at the moment) is required but not in the list, because Vagrant will take care of this dependency on guest machine. For Debian box installation of Ansible latest version solved by [pip](https://pip.pypa.io/) package installer. Ubuntu does not need it, though installation runs via ppa:ansible/ansible repository.
+[Ansible](https://www.ansible.com/) (2.2.0 at the moment) is required but not in the list, because Vagrant will take care of this dependency on guest machine. For Debian box installation of Ansible latest version solved by [pip](https://pip.pypa.io/) package installer. Ubuntu does not need it, installation runs via ppa:ansible/ansible repository.
 
 _Noteworthy Windows issue_: box do not properly initialize due to lack of rsync method folders synchronization.
-Fix:
-In file `{Drive|C}:\Users\{your_username}\.vagrant.d\boxes\{box_name}\{box_version}\virtualbox\include\_Vagrantfile` this
+
+Fix: in file `{Drive|C}:\Users\{your_username}\.vagrant.d\boxes\{box_name}\{box_version}\virtualbox\include\_Vagrantfile` this
 ```ruby
 config.vm.synced_folder ".", "/vagrant", type: "rsync"
 ```
@@ -45,9 +46,10 @@ config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 ## Usage 💻
 Consider this directory where it all will be fired up (as example):
 `{vagrant_box}` = `~/{your_username}/vagrant_boxes/local-webdev-environment`
+
 Sites config in `{vagrant_box}/ansible/roles/webdev/vars/main.yml`
 
-Before provisioning sites home dirs must physically present in `{vagrant_box}/sites` (`{vagrant_box}/sites/test.dev/www` concerning config) — i.e. create them before the provisioning or else it will fail.
+Before provisioning sites' home dirs must physically present in `{vagrant_box}/sites` (`{vagrant_box}/sites/test.dev/www` concerning config) — i.e. create them before the provisioning or else it will fail.
 Corresponding domains must be added to the host's machine `hosts` file:
 Windows:`\Windows\system32\drivers\etc\hosts`
 Linux: `/etc/hosts`
