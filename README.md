@@ -45,7 +45,7 @@ config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
 ## Usage 💻
 Consider this directory where it all will be fired up (as example):
-`{vagrant_box}` = `~/{your_username}/vagrant_boxes/local-webdev-environment`
+`{vagrant_box}` = `~/vagrant_boxes/local-webdev-environment`
 
 Sites config in `{vagrant_box}/ansible/roles/webdev/vars/main.yml`
 
