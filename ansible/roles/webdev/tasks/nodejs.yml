@@ -1,8 +1,6 @@
 ---
 - name: nodejs - get
-# get_url wont work on system with python prior to 2.7.9 (no support for SNI - SSL verification failure error)
-# shell: curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-  get_url: url=https://deb.nodesource.com/setup_7.x dest=/home/vagrant/nodejs_setup.sh mode=u+x
+  get_url: url=https://deb.nodesource.com/setup_8.x dest=/home/vagrant/nodejs_setup.sh mode=u+x
 
 - name: nodejs - run script
   shell: /home/vagrant/nodejs_setup.sh removes /home/vagrant/nodejs_setup.sh
