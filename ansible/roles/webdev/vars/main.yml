@@ -43,7 +43,6 @@ mysql_root_pass: root
 nodejs_modules:
   - bower
   - gulp-cli
-  - yarn
 
 php_ini:
   sendmail_path:
