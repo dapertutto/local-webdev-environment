@@ -5,32 +5,32 @@ Should work on Ubuntu boxes as well.
 ## What will be installed and configured ⚒️
 Generally latest versions available (otherwise specified major.[minor] that matters)
 - [Apache 2](https://httpd.apache.org/)
-- [PHP 5.6](http://php.net/) ([php-fpm](https://wiki.apache.org/httpd/PHP-FPM))
+- [PHP 5.6](http://php.net/) ([php5-fpm](https://wiki.apache.org/httpd/PHP-FPM))
   - [Composer](https://getcomposer.org/)
   - [XDebug](https://xdebug.org/)
 - [Mysql 5.5](https://www.mysql.com/)
   - [phpMyAdmin](https://www.phpmyadmin.net/)
 - [MailHog](https://github.com/mailhog/MailHog)
-- [Node.js 7](https://nodejs.org/)
+- [Node.js 8](https://nodejs.org/)
   - [bower](https://bower.io/) globally
   - [gulp](http://gulpjs.com/) globally
-  - [yarn](https://yarnpkg.com/) globally
 - [Midnight Commander](http://www.midnight-commander.org/)
 - [git](https://git-scm.com/)
 - [curl](https://curl.haxx.se/)
 - [lynx](http://lynx.browser.org/)
+- [yarn](https://yarnpkg.com/)
 - [vim](http://www.vim.org/)
 
-bower, gulp, yarn, git, curl, lynx, vim - as is.
+bower, gulp, yarn, git, curl, lynx, mc, vim - as is.
 
 Guest machine timezone: Europe/Moscow
 
 ## Prerequisites ⚠️
-- [VirtualBox](https://www.virtualbox.org/) (5.1.8 at the moment)
-- [Vagrant](https://www.vagrantup.com/) (1.8.6 at the moment) — Vagrant service and API understanding
+- [VirtualBox](https://www.virtualbox.org/) (5.1.26 at the moment)
+- [Vagrant](https://www.vagrantup.com/) (2.0.0 at the moment) — Vagrant service and API understanding
   - [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) Vagrant handy plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.
 
-[Ansible](https://www.ansible.com/) (2.2.0 at the moment) is required but not in the list, because Vagrant will take care of this dependency on guest machine. For Debian box installation of Ansible latest version solved by [pip](https://pip.pypa.io/) package installer. Ubuntu does not need it, installation runs via ppa:ansible/ansible repository.
+[Ansible](https://www.ansible.com/) (2.3.2.0 at the moment) is required but not in the list, because Vagrant will take care of this dependency on guest machine. For Debian box installation of Ansible latest version solved by [pip](https://pip.pypa.io/) package installer. Ubuntu does not need it, installation runs via ppa:ansible/ansible repository.
 
 _Noteworthy Windows issue_: box do not properly initialize due to lack of rsync method folders synchronization.
 
