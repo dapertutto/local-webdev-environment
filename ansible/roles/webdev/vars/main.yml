@@ -44,7 +44,7 @@ nodejs_modules:
   - bower
   - gulp-cli
 
-php_ini:
+php56_ini:
   sendmail_path:
     chapter: mail function
     val: '{{ mailhog_dir }}/mailhog sendmail'
@@ -109,7 +109,7 @@ php_ini:
 php5_fpm_ini:
   listen:
     chapter: www
-    val: '127.0.0.1:9000'
+    val: '127.0.0.1:9056'
   group:
     chapter: www
     val: vagrant
@@ -120,7 +120,7 @@ php5_fpm_ini:
     chapter: www
     val: vagrant
 
-php_packages:
+php56_packages:
   - php5
   - php5-common
   - php5-curl
@@ -131,6 +131,103 @@ php_packages:
   - php5-mysqlnd
   - php5-oauth
   - php5-xdebug
+
+php71_ini:
+  sendmail_path:
+    chapter: mail function
+    val: '{{ mailhog_dir }}/mailhog sendmail'
+  error_reporting:
+    chapter: PHP
+    val: E_ALL
+  display_errors:
+    chapter: PHP
+    val: On
+  display_startup_errors:
+    chapter: PHP
+    val: On
+  max_execution_time:
+    chapter: PHP
+    val: 60
+  memory_limit:
+    chapter: PHP
+    val: 256M
+  post_max_size:
+    chapter: PHP
+    val: 50M
+  track_errors:
+    chapter: PHP
+    val: On
+  upload_max_filesize:
+    chapter: PHP
+    val: 50M
+  xdebug.collect_params:
+    chapter: Xdebug
+    val: 4
+  xdebug.collect_includes:
+    chapter: Xdebug
+    val: 1
+  xdebug.default_enable:
+    chapter: Xdebug
+    val: 1
+  xdebug.dump.REQUEST:
+    chapter: Xdebug
+    val: '*'
+  xdebug.dump.SESSION:
+    chapter: Xdebug
+    val: '*'
+  xdebug.var_display_max_children:
+    chapter: Xdebug
+    val: -1
+  xdebug.var_display_max_depth:
+    chapter: Xdebug
+    val: 5
+  xdebug.idekey:
+    chapter: Xdebug
+    val: ECLIPSE
+  xdebug.remote_enable:
+    chapter: Xdebug
+    val: 1
+  xdebug.remote_host:
+    chapter: Xdebug
+    val: 10.0.2.2
+  xdebug.remote_port:
+    chapter: Xdebug
+    val: 9001
+
+php71_fpm_ini:
+  listen:
+    chapter: www
+    val: '127.0.0.1:9071'
+  group:
+    chapter: www
+    val: vagrant
+  security.limit_extensions:
+    chapter: www
+    val: .php .html .htm
+  user:
+    chapter: www
+    val: vagrant
+
+php71_packages:
+  - php7.1
+  - php7.1-cli
+  - php7.1-common
+  - php7.1-curl
+  - php7.1-fileinfo
+  - php7.1-fpm
+  - php7.1-gd
+  - php7.1-iconv
+  - php7.1-json
+  - php7.1-mbstring
+  - php7.1-mcrypt
+  - php7.1-mysql
+  - php7.1-mysqli
+  - php7.1-mysqlnd
+  - php7.1-oauth
+  - php7.1-opcache
+  - php7.1-pdo
+  - php7.1-pdo-mysql
+  - php7.1-xdebug
 
 phpmyadmin_debconf:
   q1:
@@ -163,12 +260,15 @@ sites:
     root_www: '{{ sites_homedir }}/test.dev/www'
 
 system_packages:
+  - apt-transport-https
   - build-essential
+  - ca-certificates
   - curl
   - git
   - libgd3
   - libgd-dev
   - libgd-tools
+  - lsb-release
   - lynx
   - mc
   - vim

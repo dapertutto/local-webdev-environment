@@ -3,7 +3,6 @@
   apt: name={{ item }} state=latest
   with_items: '{{ system_packages }}'
 
-# works since 2.2.0
 - name: set timezone to {{ timezone }}
   timezone: name={{ timezone }}
 
