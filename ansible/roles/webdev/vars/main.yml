@@ -170,6 +170,7 @@ system_packages:
   - libgd-dev
   - libgd-tools
   - lynx
+  - mc
   - vim
 
 timezone: Europe/Moscow
