@@ -4,7 +4,7 @@ apache2_packages:
   - apache2-utils
 
 mailhog_dir: /opt/mailhog
-mailhog_get_url: https://github.com/mailhog/MailHog/releases/download/v0.2.1/MailHog_linux_amd64
+mailhog_get_url: https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
 
 mc_config:
   vagrant:
