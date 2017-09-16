@@ -15,3 +15,29 @@
   notify:
   - restart php5-fpm
 
+- name: php7.1 - add key
+  apt_key:
+    url: https://packages.sury.org/php/apt.gpg
+    state: present
+
+- name: php7.1 - add php7.1 source
+  apt_repository:
+    repo: deb https://packages.sury.org/php/ jessie main
+    state: present
+    filename: php
+
+- name: php7.1 - install packages
+  apt: name={{ item }} state=latest
+  with_items: '{{ php71_packages }}'
+
+- name: php7.1 - ini settings
+  ini_file: dest=/etc/php/7.1/fpm/php.ini section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
+  with_dict: '{{ php_ini }}'
+  notify:
+  - restart php7.1-fpm
+
+- name: php7.1-fpm - ini settings
+  ini_file: dest=/etc/php/7.1/fpm/pool.d/www.conf section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
+  with_dict: '{{ php71_fpm_ini }}'
+  notify:
+  - restart php7.1-fpm
