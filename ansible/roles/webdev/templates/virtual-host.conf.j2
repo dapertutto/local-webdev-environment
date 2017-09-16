@@ -1,13 +1,27 @@
-<VirtualHost *:80>
-	ServerAdmin webmaster@localhost
-	ServerName {{ item.value.domain }}
-	DocumentRoot "{{ item.value.root_www }}"
-	DirectoryIndex index.php index.html
-	ProxyPassMatch ^(.*\.(?:php|html|htm)(/.*)?)$ fcgi://127.0.0.1:9000{{ item.value.root_www }}$1
-	<Directory "{{ item.value.root_www }}">
-		Options Indexes FollowSymLinks
-		AllowOverride All
-		Require all granted
-	</Directory>
-	ErrorLog {{ item.value.root }}/error.log
+<VirtualHost *:8056>
+    ServerAdmin webmaster@localhost
+    ServerName {{ item.value.domain }}
+    DocumentRoot "{{ item.value.root_www }}"
+    DirectoryIndex index.php index.html
+    ProxyPassMatch ^(.*\.(?:php|html|htm)(/.*)?)$ fcgi://127.0.0.1:9056{{ item.value.root_www }}$1
+    <Directory "{{ item.value.root_www }}">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog {{ item.value.root }}/error.log
+</VirtualHost>
+
+<VirtualHost *:8071>
+    ServerAdmin webmaster@localhost
+    ServerName {{ item.value.domain }}
+    DocumentRoot "{{ item.value.root_www }}"
+    DirectoryIndex index.php index.html
+    ProxyPassMatch ^(.*\.(?:php|html|htm)(/.*)?)$ fcgi://127.0.0.1:9071{{ item.value.root_www }}$1
+    <Directory "{{ item.value.root_www }}">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog {{ item.value.root }}/error.log
 </VirtualHost>
