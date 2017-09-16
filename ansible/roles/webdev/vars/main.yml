@@ -66,6 +66,9 @@ php56_ini:
   post_max_size:
     chapter: PHP
     val: 50M
+  short_open_tag:
+    chapter: PHP
+    val: On
   track_errors:
     chapter: PHP
     val: On
@@ -220,7 +223,6 @@ php71_packages:
   - php7.1-json
   - php7.1-mbstring
   - php7.1-mcrypt
-  - php7.1-mysql
   - php7.1-mysqli
   - php7.1-mysqlnd
   - php7.1-oauth
