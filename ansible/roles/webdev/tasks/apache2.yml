@@ -13,6 +13,9 @@
     - a2enmod proxy_fcgi
     - a2enmod rewrite
 
+- name: Apache 2 - listen to additional ports
+  copy: src='ports.conf' dest='/etc/apache2/ports.conf' owner=root group=root mode=0644
+
 - name: Apache 2 - add sites conf
   template: src=virtual-host.conf.j2 dest=/etc/apache2/sites-available/{{ item.value.domain }}.conf
   with_dict: '{{ sites }}'
