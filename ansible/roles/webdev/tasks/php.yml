@@ -32,7 +32,7 @@
 
 - name: php7.1 - ini settings
   ini_file: dest=/etc/php/7.1/fpm/php.ini section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
-  with_dict: '{{ php_ini }}'
+  with_dict: '{{ php71_ini }}'
   notify:
   - restart php7.1-fpm
 
