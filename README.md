@@ -6,6 +6,7 @@ Should work on Ubuntu boxes as well.
 Generally latest versions available (otherwise specified major.[minor] that matters)
 - [Apache 2](https://httpd.apache.org/)
 - [PHP 5.6](http://php.net/) ([php5-fpm](https://wiki.apache.org/httpd/PHP-FPM))
+- [PHP 7.1](http://php.net/) ([php7.1-fpm](https://wiki.apache.org/httpd/PHP-FPM))
   - [Composer](https://getcomposer.org/)
   - [XDebug](https://xdebug.org/)
 - [Mysql 5.5](https://www.mysql.com/)
@@ -58,11 +59,12 @@ as follows:
 127.0.0.1   test.dev    www.test.dev
 ```
 After successful `vagrant up` gain access to:
-- http://test.dev:8080 — test.dev (and so the others via port 8080)
-- http://localhost:8080/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credential is `root:root`, shoo!)
+- http://test.dev:8056 — test.dev php 5.6 through php5-fpm (and so other sites via port 8056)
+- http://test.dev:8071 — test.dev php 7.1 through php7.1-fpm (and so other sites via port 8071)
+- http://localhost:8056/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credential is `root:root`, shoo!)
 - http://127.0.0.1:8025 — MailHog mailcatcher service to test email sending locally
 - Composer runs as `composer` in shell
-- php Xdebug on 9001 port. I'm using nice Firefox add-on [Cute Xdebug](https://addons.mozilla.org/en-US/firefox/addon/cute-xdebug/?src=api) to switch listening on and off with Eclipse IDE
+- php Xdebug on 9001 port. I'm using Firefox add-on [Xdebug Session Cookie](https://addons.mozilla.org/en-US/firefox/addon/xdebug-session-cookie/) to trigger catching by IDE.
 
 **Cheers!**
 ### May the almighty Cat be with you 😺
