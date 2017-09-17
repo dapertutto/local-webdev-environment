@@ -10,6 +10,6 @@
   template: src=phpmyadmin.inc.php.j2 dest=/etc/phpmyadmin/conf.d/localhost.inc.php
 
 - name: phpmyadmin - work with php5-fpm
-  replace: dest=/etc/phpmyadmin/apache.conf regexp='^(# phpMyAdmin default Apache configuration)$' replace='\1 - php5-fpm-patched\nProxyPassMatch ^/phpmyadmin/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/usr/share/phpmyadmin/$1' backup=yes
+  replace: dest=/etc/phpmyadmin/apache.conf regexp='^(# phpMyAdmin default Apache configuration)$' replace='\1 - php5-fpm-patched\nProxyPassMatch ^/phpmyadmin/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9056/usr/share/phpmyadmin/$1' backup=yes
   notify:
   - restart apache2
