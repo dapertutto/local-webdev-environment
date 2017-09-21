@@ -42,7 +42,9 @@ mysql_root_pass: root
 
 nodejs_modules:
   - bower
+  - eslint
   - gulp-cli
+  - vue-cli
 
 php56_ini:
   sendmail_path:
