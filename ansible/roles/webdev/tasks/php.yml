@@ -22,7 +22,7 @@
 
 - name: php7.1 - add php7.1 source
   apt_repository:
-    repo: deb https://packages.sury.org/php/ jessie main
+    repo: deb https://packages.sury.org/php/ stretch main
     state: present
     filename: php
 
