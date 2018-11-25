@@ -12,12 +12,12 @@
     ErrorLog {{ item.value.root }}/error.log
 </VirtualHost>
 
-<VirtualHost *:8071>
+<VirtualHost *:8072>
     ServerAdmin webmaster@localhost
     ServerName {{ item.value.domain }}
     DocumentRoot "{{ item.value.root_www }}"
     DirectoryIndex index.php index.html
-    ProxyPassMatch ^(.*\.(?:php|html|htm)(/.*)?)$ fcgi://127.0.0.1:9071{{ item.value.root_www }}$1
+    ProxyPassMatch ^(.*\.(?:php|html|htm)(/.*)?)$ fcgi://127.0.0.1:9072{{ item.value.root_www }}$1
     <Directory "{{ item.value.root_www }}">
         Options Indexes FollowSymLinks
         AllowOverride All

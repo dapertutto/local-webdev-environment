@@ -137,7 +137,7 @@ php56_packages:
   - php5-oauth
   - php5-xdebug
 
-php71_ini:
+php72_ini:
   sendmail_path:
     chapter: mail function
     val: '{{ mailhog_dir }}/mailhog sendmail'
@@ -199,10 +199,10 @@ php71_ini:
     chapter: Xdebug
     val: 9001
 
-php71_fpm_ini:
+php72_fpm_ini:
   listen:
     chapter: www
-    val: '127.0.0.1:9071'
+    val: '127.0.0.1:9072'
   group:
     chapter: www
     val: vagrant
@@ -213,25 +213,25 @@ php71_fpm_ini:
     chapter: www
     val: vagrant
 
-php71_packages:
-  - php7.1
-  - php7.1-cli
-  - php7.1-common
-  - php7.1-curl
-  - php7.1-fileinfo
-  - php7.1-fpm
-  - php7.1-gd
-  - php7.1-iconv
-  - php7.1-json
-  - php7.1-mbstring
-  - php7.1-mcrypt
-  - php7.1-mysqli
-  - php7.1-mysqlnd
-  - php7.1-oauth
-  - php7.1-opcache
-  - php7.1-pdo
-  - php7.1-pdo-mysql
-  - php7.1-xdebug
+php72_packages:
+  - php7.2
+  - php7.2-cli
+  - php7.2-common
+  - php7.2-curl
+  - php7.2-fileinfo
+  - php7.2-fpm
+  - php7.2-gd
+  - php7.2-iconv
+  - php7.2-json
+  - php7.2-mbstring
+  - php7.2-mcrypt
+  - php7.2-mysqli
+  - php7.2-mysqlnd
+  - php7.2-oauth
+  - php7.2-opcache
+  - php7.2-pdo
+  - php7.2-pdo-mysql
+  - php7.2-xdebug
 
 phpmyadmin_debconf:
   q1:
