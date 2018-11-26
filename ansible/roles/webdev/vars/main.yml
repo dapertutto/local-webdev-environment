@@ -264,6 +264,7 @@ sites:
     root_www: '{{ sites_homedir }}/test.dev/www'
 
 system_packages:
+  - aptitude
   - apt-transport-https
   - build-essential
   - ca-certificates
