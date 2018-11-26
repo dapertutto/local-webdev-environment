@@ -111,7 +111,7 @@ php56_ini:
     chapter: Xdebug
     val: 9001
 
-php5_fpm_ini:
+php56_fpm_ini:
   listen:
     chapter: www
     val: '127.0.0.1:9056'
@@ -126,16 +126,24 @@ php5_fpm_ini:
     val: vagrant
 
 php56_packages:
-  - php5
-  - php5-common
-  - php5-curl
-  - php5-fpm
-  - php5-gd
-  - php5-json
-  - php5-mcrypt
-  - php5-mysqlnd
-  - php5-oauth
-  - php5-xdebug
+  - php5.6
+  - php5.6-cli
+  - php5.6-common
+  - php5.6-curl
+  - php5.6-fileinfo
+  - php5.6-fpm
+  - php5.6-gd
+  - php5.6-iconv
+  - php5.6-json
+  - php5.6-mbstring
+  - php5.6-mcrypt
+  - php5.6-mysqli
+  - php5.6-mysqlnd
+  - php5.6-oauth
+  - php5.6-opcache
+  - php5.6-pdo
+  - php5.6-pdo-mysql
+  - php5.6-xdebug
 
 php72_ini:
   sendmail_path:
@@ -224,7 +232,6 @@ php72_packages:
   - php7.2-iconv
   - php7.2-json
   - php7.2-mbstring
-  - php7.2-mcrypt
   - php7.2-mysqli
   - php7.2-mysqlnd
   - php7.2-oauth
