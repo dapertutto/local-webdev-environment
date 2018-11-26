@@ -1,7 +1,8 @@
 ---
 - name: php5 - install packages
-  apt: name={{ item }} state=latest
-  with_items: '{{ php56_packages }}'
+  apt:
+    name: '{{ php56_packages }}'
+    state: latest
 
 - name: php5 - ini settings
   ini_file: dest=/etc/php5/fpm/php.ini section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}
@@ -27,8 +28,9 @@
     filename: php
 
 - name: php7.2 - install packages
-  apt: name={{ item }} state=latest
-  with_items: '{{ php72_packages }}'
+  apt:
+    name: '{{ php72_packages }}'
+    state: latest
 
 - name: php7.2 - ini settings
   ini_file: dest=/etc/php/7.2/fpm/php.ini section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }}

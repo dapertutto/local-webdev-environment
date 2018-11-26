@@ -1,7 +1,8 @@
 ---
 - name: Apache 2 - install packages
-  apt: name={{ item }} state=latest
-  with_items: '{{ apache2_packages }}'
+  apt:
+    name: '{{ apache2_packages }}'
+    state: latest
 
 - name: Apache 2 - disable default site
   command: a2dissite 000-default.conf removes=/etc/apache2/sites-enabled/000-default.conf
@@ -29,4 +30,3 @@
 - name: hosts sites dev domains
   template: src=hosts.j2 dest=/etc/hosts owner=root group=root
   with_dict: '{{ sites }}'
-

@@ -1,7 +1,8 @@
 ---
 - name: install system packages
-  apt: name={{ item }} state=latest
-  with_items: '{{ system_packages }}'
+  apt:
+    name: '{{ system_packages }}'
+    state: latest
 
 - name: set timezone to {{ timezone }}
   timezone: name={{ timezone }}
