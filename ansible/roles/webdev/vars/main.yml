@@ -266,9 +266,9 @@ sites_homedir: /vagrant/sites
 
 sites:
   test:
-    domain: test.dev
-    root: '{{ sites_homedir }}/test.dev'
-    root_www: '{{ sites_homedir }}/test.dev/www'
+    domain: test.loc
+    root: '{{ sites_homedir }}/test'
+    root_www: '{{ sites_homedir }}/test/www'
 
 system_packages:
   - aptitude
