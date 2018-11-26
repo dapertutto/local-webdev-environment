@@ -7,6 +7,11 @@
 - name: set timezone to {{ timezone }}
   timezone: name={{ timezone }}
 
+- name: set locale to {{ locale }}
+  locale_gen:
+    name: '{{ locale }}'
+    state: present
+
 - include: apache2.yml
 - include: mailhog.yml
 - include: php.yml
