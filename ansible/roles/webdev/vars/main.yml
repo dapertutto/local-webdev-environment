@@ -278,6 +278,8 @@ system_packages:
   - build-essential
   - ca-certificates
   - curl
+  - debconf
+  - debconf-utils
   - git
   - libgd3
   - libgd-dev
