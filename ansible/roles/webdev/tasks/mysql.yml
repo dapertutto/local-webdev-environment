@@ -10,7 +10,7 @@
 
 # - name: mysql - confirm maria db root password before installing
 #   debconf: name='mariadb-server' question='mysql-server/root_password_again' value='{{ mysql_root_pass }}' vtype='password'
-
+#
 - name: mysql - install packages
   apt:
     name: '{{ mysql_packages }}'
@@ -30,14 +30,8 @@
   - ::1
   - localhost
 
-- name: mysql - change plugin to mysql_native_password
-  command: mysql -u root -p{{ mysql_root_pass }} -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE plugin='' OR plugin='unix_socket'; FLUSH PRIVILEGES;"
-
 - name: mysql - my.cnf file
   ini_file: dest=/root/.my.cnf section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }} create=yes owner=root group=root mode=0600
   with_dict: '{{ mysql_ini }}'
   notify:
   - restart mysql
-
-- name: mysql - remove test database
-  mysql_db: db=test state=absent login_user=root login_password={{ mysql_root_pass }}
