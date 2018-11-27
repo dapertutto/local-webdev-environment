@@ -1,4 +1,16 @@
 ---
+# - name: mysql - root password before installing
+#   debconf: name='mysql-server' question='mysql-server/root_password' value='{{ mysql_root_pass }}' vtype='password'
+
+# - name: mysql - confirm root password before installing
+#   debconf: name='mysql-server' question='mysql-server/root_password_again' value='{{ mysql_root_pass }}' vtype='password'
+
+# - name: mysql - maria db root password before installing
+#   debconf: name='mariadb-server' question='mysql-server/root_password' value='{{ mysql_root_pass }}' vtype='password'
+
+# - name: mysql - confirm maria db root password before installing
+#   debconf: name='mariadb-server' question='mysql-server/root_password_again' value='{{ mysql_root_pass }}' vtype='password'
+
 - name: mysql - install packages
   apt:
     name: '{{ mysql_packages }}'
@@ -19,7 +31,7 @@
   - localhost
 
 - name: mysql - change plugin to mysql_native_password
-  command: mysql -u root -p{{ mysql_root_pass }} -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE plugin='' OR plugin='unix_socket'; FLUSH PRIVILEGES;"
+  command: mysql -u root -p{{ mysql_root_pass }} -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE plugin=''; FLUSH PRIVILEGES;"
 
 - name: mysql - my.cnf file
   ini_file: dest=/root/.my.cnf section={{ item.value.chapter }} option={{ item.key }} value={{ item.value.val }} create=yes owner=root group=root mode=0600
