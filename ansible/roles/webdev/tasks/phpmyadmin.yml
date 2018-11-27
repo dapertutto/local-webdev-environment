@@ -10,9 +10,9 @@
   template: src=phpmyadmin.inc.php.j2 dest=/etc/phpmyadmin/conf.d/localhost.inc.php
 
 - name: mysql - change plugin to mysql_native_password
-  command: mysql -u root -p{{ mysql_root_pass }} -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE user='phpmyadmin'; FLUSH PRIVILEGES;"
+  command: mysql -u root -p{{ mysql_root_pass }} -e "UPDATE mysql.user SET plugin='mysql_native_password' WHERE plugin='' OR plugin='unix_socket'; FLUSH PRIVILEGES;"
 
-- name: phpmyadmin - work with php7.2-fpm
+- name: phpmyadmin - work with php5.6-fpm
   replace: dest=/etc/phpmyadmin/apache.conf regexp='^(# phpMyAdmin default Apache configuration)$' replace='\1 - php5.6-fpm-patched\nProxyPassMatch ^/phpmyadmin/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9056/usr/share/phpmyadmin/$1' backup=yes
   notify:
   - restart apache2
