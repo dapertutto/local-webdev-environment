@@ -68,7 +68,7 @@ as follows:
 After successful `vagrant up` gain access to:
 - http://test.loc:8056 — test.loc php 5.6 through php5.6-fpm (and so other sites via port 8056)
 - http://test.loc:8072 — test.loc php 7.2 through php7.2-fpm (and so other sites via port 8072)
-- http://localhost:8056/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credential is `root:root`, shoo!)
+- http://localhost:8072/phpmyadmin — phpMyAdmin (auth by config, no need to relogin; btw Mysql credential is `root:root`, shoo!). If you encounter pesky alert popup (concerning internal php warnings). Go to the settings page -> Features -> General -> set `Send error reports` option to "Never send error reports".
 - http://127.0.0.1:8025 — MailHog mailcatcher service to test email sending locally
 - Composer runs as `composer` in shell
 - php Xdebug on 9001 port. I'm using Firefox add-on [Xdebug Session Cookie](https://addons.mozilla.org/en-US/firefox/addon/xdebug-session-cookie/) to trigger catching by IDE.
